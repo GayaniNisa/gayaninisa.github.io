@@ -287,7 +287,6 @@ var DashboardComponent = /** @class */ (function () {
         this.details = false;
         this.api_service.getCovidUpdates().subscribe(function (data) {
             _this.apiData = data;
-            console.log(data);
             _this.updateDate = data.data.update_date_time;
         });
     }
@@ -300,22 +299,16 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.ngOnInit = function () {
     };
     DashboardComponent.prototype.getLocal = function () {
-        console.log('local');
         this.initial();
         this.local = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     };
     DashboardComponent.prototype.getGlobal = function () {
-        console.log('global');
         this.initial();
         this.global = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     };
     DashboardComponent.prototype.getTesting = function () {
-        console.log('testing');
         this.initial();
         this.testing = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     };
     DashboardComponent.prototype.getDetails = function () {
         this.initial();
@@ -370,10 +363,7 @@ var DetailsHospitalsComponent = /** @class */ (function () {
         var _this = this;
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(function (data) {
-            // console.log(data.data.global_new_cases)
             _this.hostpitalList = data.data.hospital_data;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     DetailsHospitalsComponent.prototype.ngOnInit = function () {
@@ -430,7 +420,6 @@ var LandingComponent = /** @class */ (function () {
     LandingComponent.prototype.ngOnInit = function () {
     };
     LandingComponent.prototype.navigatedashboard = function () {
-        console.log('dash');
         this.router.navigate(['/dashboard']);
     };
     LandingComponent.ctorParameters = function () { return [
@@ -482,14 +471,11 @@ var RightGlobalComponent = /** @class */ (function () {
         var _this = this;
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(function (data) {
-            // console.log(data.data.global_new_cases)
             _this.globaltotalcases = data.data.global_total_cases;
             _this.globaldeaths = data.data.global_deaths;
             _this.globalrecovered = data.data.global_recovered;
             _this.globalnewcases = data.data.global_new_cases;
             _this.globalnewdeaths = data.data.global_new_deaths;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     RightGlobalComponent.prototype.ngOnInit = function () {
@@ -543,15 +529,12 @@ var RightLocalComponent = /** @class */ (function () {
         var _this = this;
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(function (data) {
-            // console.log(data.data.global_new_cases)
             _this.localtotalcases = data.data.local_total_cases;
             _this.localdeaths = data.data.local_deaths;
             _this.localrecovered = data.data.local_recovered;
             _this.localactive = data.data.local_active_cases;
             _this.localnewcases = data.data.local_new_cases;
             _this.localnewdeaths = data.data.local_new_deaths;
-            console.log(data.data.local_new_cases);
-            console.log(_this.localnewcases);
         });
     }
     RightLocalComponent.prototype.ngOnInit = function () {
@@ -605,11 +588,8 @@ var RightPcrComponent = /** @class */ (function () {
         var _this = this;
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(function (data) {
-            // console.log(data.data.global_new_cases)
             _this.pcrcount = data.data.total_pcr_testing_count;
             _this.pcrList = data.data.daily_pcr_testing_data;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     RightPcrComponent.prototype.ngOnInit = function () {

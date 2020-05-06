@@ -279,7 +279,6 @@ let DashboardComponent = class DashboardComponent {
         this.details = false;
         this.api_service.getCovidUpdates().subscribe(data => {
             this.apiData = data;
-            console.log(data);
             this.updateDate = data.data.update_date_time;
         });
     }
@@ -292,22 +291,16 @@ let DashboardComponent = class DashboardComponent {
     ngOnInit() {
     }
     getLocal() {
-        console.log('local');
         this.initial();
         this.local = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     }
     getGlobal() {
-        console.log('global');
         this.initial();
         this.global = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     }
     getTesting() {
-        console.log('testing');
         this.initial();
         this.testing = true;
-        console.log(this.local + " " + this.global + " " + this.testing);
     }
     getDetails() {
         this.initial();
@@ -360,10 +353,7 @@ let DetailsHospitalsComponent = class DetailsHospitalsComponent {
     constructor(serviceAPI) {
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(data => {
-            // console.log(data.data.global_new_cases)
             this.hostpitalList = data.data.hospital_data;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     ngOnInit() {
@@ -419,7 +409,6 @@ let LandingComponent = class LandingComponent {
     ngOnInit() {
     }
     navigatedashboard() {
-        console.log('dash');
         this.router.navigate(['/dashboard']);
     }
 };
@@ -469,14 +458,11 @@ let RightGlobalComponent = class RightGlobalComponent {
     constructor(serviceAPI) {
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(data => {
-            // console.log(data.data.global_new_cases)
             this.globaltotalcases = data.data.global_total_cases;
             this.globaldeaths = data.data.global_deaths;
             this.globalrecovered = data.data.global_recovered;
             this.globalnewcases = data.data.global_new_cases;
             this.globalnewdeaths = data.data.global_new_deaths;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     ngOnInit() {
@@ -528,15 +514,12 @@ let RightLocalComponent = class RightLocalComponent {
     constructor(serviceAPI) {
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(data => {
-            // console.log(data.data.global_new_cases)
             this.localtotalcases = data.data.local_total_cases;
             this.localdeaths = data.data.local_deaths;
             this.localrecovered = data.data.local_recovered;
             this.localactive = data.data.local_active_cases;
             this.localnewcases = data.data.local_new_cases;
             this.localnewdeaths = data.data.local_new_deaths;
-            console.log(data.data.local_new_cases);
-            console.log(this.localnewcases);
         });
     }
     ngOnInit() {
@@ -588,11 +571,8 @@ let RightPcrComponent = class RightPcrComponent {
     constructor(serviceAPI) {
         this.serviceAPI = serviceAPI;
         this.serviceAPI.getCovidUpdates().subscribe(data => {
-            // console.log(data.data.global_new_cases)
             this.pcrcount = data.data.total_pcr_testing_count;
             this.pcrList = data.data.daily_pcr_testing_data;
-            // console.log(data.data.local_new_cases)
-            console.log(data.data.global_total_cases);
         });
     }
     ngOnInit() {
